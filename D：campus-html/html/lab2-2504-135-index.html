@@ -5,6 +5,12 @@
     <title>春韵数字展销平台</title>
     <!-- 引入CSS样式 -->
     <link rel="stylesheet" href="CSS/lab2-2504-0135-index.css">
+    <style>
+        /* 加上平滑滚动，体验更好 */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
     <!-- 1. 头部区域：Logo + 导航菜单 -->
@@ -14,11 +20,11 @@
         </div>
         <nav class="nav">
             <ul>
-                <li><a href=" ">首页</a ></li>
-                <li><a href="#">图书分类</a ></li>
-                <li><a href="#">热门推荐</a ></li>
-                <li><a href="#">新书上市</a ></li>
-                <li><a href="#">关于我们</a ></li>
+                <li><a href="#header">首页</a ></li>
+                <li><a href="#category">图书分类</a ></li>
+                <li><a href="#hot">热门推荐</a ></li>
+                <li><a href="#new">新书上市</a ></li>
+                <li><a href="#footer">关于我们</a ></li>
             </ul>
         </nav>
         <div class="clearfix"></div>
@@ -27,7 +33,7 @@
     <!-- 2. 主体内容区：三栏浮动布局 -->
     <div class="container">
         <!-- 左侧栏：图书分类导航（相对定位） -->
-        <aside class="left-sidebar">
+        <aside class="left-sidebar" id="category">
             <h3>图书分类导航</h3>
             <ul>
                 <li><a href="#">文学小说</a ></li>
@@ -61,7 +67,7 @@
             </section>
 
             <!-- 热门推荐：浮动排列 -->
-            <section class="hot-recommend">
+            <section class="hot-recommend" id="hot">
                 <h3>热门推荐</h3>
                 <div class="hot-item">
                     <img src="https://pic2.zhimg.com/v2-c462fa450a5ea6afe0ea0e79a3444169_1440w.jpg?source=172ae18b" alt="推荐图书">
@@ -79,7 +85,7 @@
             </section>
 
             <!-- 新书上市：Table布局 -->
-            <section class="new-book">
+            <section class="new-book" id="new">
                 <h3>新书上市</h3>
                 <table border="1" cellpadding="8" cellspacing="0">
                     <tr>

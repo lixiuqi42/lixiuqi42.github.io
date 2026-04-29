@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书商城</title>
+    <!-- 这里是关键！必须加上这行 -->
+    <link rel="stylesheet" href="../css/lab4-2504-135-index.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">图书商城</div>
+        <div class="nav-menu">
+            <a href="#">首页</a>
+            <a href="#">图书分类</a>
+            <a href="#">热销榜单</a>
+            <a href="#">关于我们</a>
+            <span id="welcome-msg">欢迎您</span>
+            <a href="#" class="login-btn">登录</a>
+            <a href="#" class="logout-btn" style="display:none;">退出</a>
+        </div>
+    </div>
+
+    <div class="login-dialog" id="loginDialog">
+        <div class="dialog-box">
+            <span class="close-btn" id="closeBtn">&times;</span>
+            <h2>用户中心</h2>
+            <div class="tab-switch">
+                <button class="tab-btn active" data-tab="login">登录</button>
+                <button class="tab-btn" data-tab="register">注册</button>
+            </div>
+
+            <div class="form-content active" id="loginForm">
+                <div class="form-group">
+                    <label>用户名</label>
+                    <input type="text" id="loginUser" placeholder="请输入用户名">
+                    <div class="error-msg" id="loginUserErr">用户名不能为空</div>
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" id="loginPwd" placeholder="请输入密码">
+                    <div class="error-msg" id="loginPwdErr">密码不能为空</div>
+                </div>
+                <button class="submit-btn" onclick="doLogin()">登录</button>
+            </div>
+
+            <div class="form-content" id="registerForm">
+                <div class="form-group">
+                    <label>用户名</label>
+                    <input type="text" id="regUser" placeholder="请输入用户名">
+                    <div class="error-msg" id="regUserErr">用户名不能为空</div>
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" id="regPwd" placeholder="请输入密码">
+                    <div class="error-msg" id="regPwdErr">密码不能为空</div>
+                </div>
+                <div class="form-group">
+                    <label>确认密码</label>
+                    <input type="password" id="regPwd2" placeholder="请确认密码">
+                    <div class="error-msg" id="regPwd2Er                                          r">两次密码不一致</div>
+                </div>
+                <button class="submit-btn" onclick="doRegister()">注册</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增轮播区域，实现题目要求的从下向上轮播 -->
+    <div class="carousel">
+        <div class="carousel-inner">
+            <img src="../image/book1.jpg" alt="book1">
+            <img src="../image/book2.jpg" alt="book2">
+            <img src="../image/book3.jpg" alt="book3">
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="sidebar-left">
+            <div class="promo-box">
+                <h4>限时优惠</h4>
+                <p>满100减20</p>
+                <button>立即抢购</button>
+            </div>
+            <div class="promo-box">
+                <h4>新品上架</h4>
+                <p>8折起售</p>
+                <button>查看更多</button>
+            </div>
+        </div>
+
+        <div class="content-middle">
+            <h3>精选图书</h3>
+            <div class="book-grid">
+                <div class="book-card">
+                    <img src="../image/book1.jpg" alt="book">
+                    <p>Web前端开发实战</p>
+                </div>
+                <div class="book-card">
+                    <img src="../image/book2.jpg" alt="book">
+                    <p>设计心理学</p>
+                </div>
+                <div class="book-card">
+                    <img src="../image/book3.jpg" alt="book">
+                    <p>中国近代史</p>
+                </div>
+                <div class="book-card">
+                    <img src="../image/book4.png" alt="book">
+                    <p>Python编程</p>
+                </div>
+            </div>
+
+            <div class="hot-recommend">
+                <h3>热门推荐</h3>
+                <div class="hot-list">
+                    <div class="hot-item">
+                        <span class="hot-tag">热销</span>
+                        <img src="../image/book5.png" alt="hot">
+                        <p>网页设计基础与实战</p>
+                    </div>
+                    <div class="hot-item">
+                        <span class="hot-tag">热销</span>
+                        <img src="../image/book6.png" alt="hot">
+                        <p>c++语言程序设计</p>
+                    </div>
+                    <div class="hot-item">
+                        <span class="hot-tag">热销</span>
+                        <img src="../image/book7.png" alt="hot">
+                        <p>深入理解计算机系统</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-right">
+            <div class="category-box">
+                <h4>图书分类</h4>
+                <ul>
+                    <li>计算机编程</li>
+                    <li>文学小说</li>
+                    <li>历史传记</li>
+                    <li>经济管理</li>
+                    <li>生活健康</li>
+                    <li>少儿读物</li>
+                </ul>
+            </div>
+            <!-- 新增购物车、搜索图标，实现悬停旋转效果 -->
+            <div class="icon-group">
+                <div class="icon-item cart-icon">🛒</div>
+                <div class="icon-item search-icon">🔍</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>图书商城 2025 版权所有</p>
+    </footer>
+
+    <script>
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const formContents = document.querySelectorAll('.form-content');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                formContents.forEach(f => f.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab + 'Form').classList.add('active');
+            });
+        });
+
+        const loginDialog = document.getElementById('loginDialog');
+        const loginBtn = document.querySelector('.login-btn');
+        const logoutBtn = document.querySelector('.logout-btn');
+        const closeBtn = document.getElementById('closeBtn');
+        const welcomeMsg = document.getElementById('welcome-msg');
+
+        loginBtn.onclick = () => loginDialog.classList.add('show');
+        closeBtn.onclick = () => loginDialog.classList.remove('show');
+
+        function doLogin() {
+            const user = document.getElementById('loginUser').value.trim();
+            const pwd = document.getElementById('loginPwd').value.trim();
+            
+            if (!user) { document.getElementById('loginUserErr').style.display = 'block'; return; }
+            if (!pwd) { document.getElementById('loginPwdErr').style.display = 'block'; return; }
+
+            welcomeMsg.textContent = '欢迎您,' + user;
+            welcomeMsg.style.display = 'inline';
+            loginBtn.style.display = 'none';
+            logoutBtn.style.display = 'inline';
+            loginDialog.classList.remove('show');
+        }
+
+        logoutBtn.onclick = () => {
+            welcomeMsg.style.display = 'none';
+            loginBtn.style.display = 'inline';
+            logoutBtn.style.display = 'none';
+        };
+    </script>
+</body>
+</html>
